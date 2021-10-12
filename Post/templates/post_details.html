@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title%} Article {% endblock %}
+{% block content %}
+<style>
+    .ontainer-fruid{
+        margin:2rem;
+        
+    }
+</style>
+
+<div class="container-fruid ">
+    <h3>{{ post.title }} - {{ post.author_name }}</h3>
+    <h5>{{ post.created_on }}</h5>
+    <hr>
+    {{ post.content }}<br>
+   
+</div>
+<div class="container border-top">
+    <br>
+    {% if user.is_authenticated %}
+        <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Edit Post</a>
+        <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary">Delete Post</a>
+    {% endif %}
+    <a href="{% url 'home'  %}" class="btn btn-secondary">Home</a>
+</div>
+{% endblock %}

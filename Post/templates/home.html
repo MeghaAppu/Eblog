@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<h3>Creator's Post</h3>
+<hr>
+{% for posts in object_list %}
+<div class="container">
+    <ul>
+        <li><h6><a href="{% url 'post_detail' posts.pk %}">{{posts.title}} </a>- {{posts.author_name }}</h6></li>
+        <li>{{ posts.genre }}</li>
+        <li>{{ posts.created_on }}</li>
+    </ul>
+    
+    <div class="container">
+        {{ posts.content|slice:":150"}}
+    </div>
+    <hr>
+</div>
+
+
+{% endfor %}
+{% endblock %}
